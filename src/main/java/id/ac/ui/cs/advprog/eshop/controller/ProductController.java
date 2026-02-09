@@ -24,10 +24,9 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String productListPafe(Model model) {
-        List<Product> allProducts = service.findAll();
-        model.addAttribute("products", allProducts);
-        return "productList";
+    public String createProductPost(@ModelAttribute Product product, Model model) {
+        service.create(product);
+        return "redirect:list";
     }
 
     @GetMapping("/list")
